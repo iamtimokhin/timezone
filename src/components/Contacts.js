@@ -9,6 +9,7 @@ import profileData from "../data/profileData";
 function Contacts() {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
+
   return (
     <>
       <Typography
@@ -20,14 +21,15 @@ function Contacts() {
       >
         Контакты
       </Typography>
-      {/* <Stack spacing={1} sx={{ mb: colors.boxMarginBottom }}></Stack> */}
+
       <Stack spacing={1} sx={{ mb: 3 }}>
         {contacts.map((link) => (
           <Button
             key={link.title}
-            href={link.url}
-            target="_blank"
             fullWidth
+            onClick={() =>
+              window.open(link.url, "_blank", "noopener,noreferrer")
+            }
             sx={{
               background: colors.contacts.buttonColor,
               color: colors.contacts.color,
@@ -35,7 +37,6 @@ function Contacts() {
               textTransform: "none",
               borderRadius: 3,
               py: 1.2,
-
               boxShadow: colors.contacts.boxShadow,
               "&:hover": { background: colors.contacts.boxShadowHover },
             }}
