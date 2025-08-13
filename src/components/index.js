@@ -1,0 +1,9 @@
+export { default as Card } from "./Card";
+export { default as BackgroundTemplate } from "./BackgroundTemplate";
+export { default as ProfileHeader } from "./ProfileHeader";
+export { default as DividerGradient } from "./DividerGradient";
+export { default as Content } from "./Content";
+export { default as Statistics } from "./Statistics";
+export { default as Advantages } from "./Advantages";
+export { default as Contacts } from "./Contacts";
+export { default as ProfileFooter } from "./ProfileFooter";
