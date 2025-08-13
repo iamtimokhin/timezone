@@ -275,47 +275,6 @@ const themes = {
     },
     boxMarginBottom: 5,
   },
-  cosmicGlow: {
-    backgroundTemplate: {
-      background: "linear-gradient(180deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
-    },
-    card: {
-      background: "#2A133C",
-      color: "white",
-      boxShadow: "0px 6px 25px rgba(221,42,123,0.4)",
-    },
-    profileHeader: {
-      boxBackground:
-        "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
-      avatarBorder: "2px solid #2A133C",
-      typographyColor: "#FFD9F3",
-    },
-    gradientRight:
-      "linear-gradient(to right, rgba(221,42,123,0.8), rgba(221,42,123,0))",
-    gradientLeft:
-      "linear-gradient(to left, rgba(129,52,175,0.8), rgba(129,52,175,0))",
-    statiscics: {
-      paperBackground: "rgba(255,255,255,0.08)",
-      typographyValueColor: "#F58529",
-      typographyLabelColor: "#FFD9F3",
-    },
-    advantages: {
-      paperBackground: "rgba(255,255,255,0.08)",
-      typographyValueColor: "#DD2A7B",
-      typographyLabelColor: "#FFD9F3",
-    },
-    contacts: {
-      buttonColor: "#DD2A7B",
-      color: "white",
-      boxShadow: "0px 4px 15px rgba(221,42,123,0.4)",
-      boxShadowHover: "#B32365",
-    },
-    profileFooter: {
-      typographyColor: "#FFD9F3",
-      hoverColor: "#F58529",
-    },
-    boxMarginBottom: 5,
-  },
   skyLine: {
     backgroundTemplate: {
       background: "linear-gradient(180deg, #2787F5, #1A5FC1)",
@@ -715,6 +674,297 @@ const themes = {
     profileFooter: {
       typographyColor: "rgba(255,255,255,0.5)",
       hoverColor: "#BBFF33",
+    },
+    boxMarginBottom: 5,
+  },
+  minecraft: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #3B5323, #1F2D16)", // зелёный лес -> тёмный грунт
+    },
+    card: {
+      background: "#2E3A23", // блок травы/земли
+      color: "white",
+      boxShadow: "0px 6px 25px rgba(0,0,0,0.5)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #6DBF3B, #8FCC4F)", // яркие пиксельные блоки
+      avatarBorder: "2px solid #2E3A23",
+      typographyColor: "#D8E9A8", // светло-зелёный
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(109,191,59,0.8), rgba(109,191,59,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(109,191,59,0.8), rgba(109,191,59,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#8FCC4F",
+      typographyLabelColor: "#D8E9A8",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#6DBF3B",
+      typographyLabelColor: "#D8E9A8",
+    },
+    contacts: {
+      buttonColor: "#6DBF3B",
+      color: "#1F2D16",
+      boxShadow: "0px 4px 15px rgba(109,191,59,0.4)",
+      boxShadowHover: "#4A7F20",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#6DBF3B",
+    },
+    boxMarginBottom: 5,
+  },
+
+  winamp: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #0B0B0B, #1C1C1C)", // тёмный фон
+    },
+    card: {
+      background: "linear-gradient(135deg, #1A1A1A, #2A2A2A)", // тёмный градиент
+      color: "#00FFCC", // яркий текст в стиле Winamp
+      boxShadow: "0 6px 25px rgba(0,255,204,0.5)",
+      borderRadius: "8px",
+      border: "1px solid rgba(0,255,204,0.3)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #FF6600, #FFCC00)", // оранжево-жёлтый градиент
+      avatarBorder: "2px solid #00FFCC",
+      typographyColor: "#FFFFFF",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(255,102,0,0.7), rgba(255,102,0,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(0,255,204,0.7), rgba(0,255,204,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FFCC00",
+      typographyLabelColor: "#00FFCC",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FF6600",
+      typographyLabelColor: "#00FFCC",
+    },
+    contacts: {
+      buttonColor: "#FF6600",
+      color: "#1C1C1C",
+      boxShadow: "0px 4px 15px rgba(255,102,0,0.5)",
+      boxShadowHover: "#FFCC00",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#FFCC00",
+    },
+    boxMarginBottom: 5,
+  },
+  amazon: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #131921, #0F1111)", // тёмный фон в стиле Amazon
+    },
+    card: {
+      background: "#1A1A1A", // тёмная карточка
+      color: "#FFFFFF", // светлый текст
+      boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+      borderRadius: "8px",
+      border: "1px solid rgba(255,255,255,0.05)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #FF9900, #FFB84D)", // градиент Amazon Orange
+      avatarBorder: "2px solid #FF9900",
+      typographyColor: "#FFFFFF",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(255,153,0,0.8), rgba(255,153,0,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(255,153,0,0.8), rgba(255,153,0,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FF9900",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FF9900",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    contacts: {
+      buttonColor: "#FF9900",
+      color: "#131921",
+      boxShadow: "0px 4px 15px rgba(255,153,0,0.4)",
+      boxShadowHover: "#CC7A00",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#FF9900",
+    },
+    boxMarginBottom: 5,
+  },
+  luxury: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #0D0D0D, #1A1A1A)", // основной фон
+    },
+    card: {
+      background: "linear-gradient(135deg, #2C2C2C, #1A1A1A, #3A1A1A)", // тёмный камуфляжный градиент
+      color: "#FFFFFF",
+      boxShadow: "0 8px 30px rgba(255,0,0,0.4)", // красная тень
+      borderRadius: "12px",
+      border: "1px solid rgba(255,255,255,0.2)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #FF0000, #800000)", // красный градиент
+      avatarBorder: "2px solid #FFD700", // золотой акцент
+      typographyColor: "#FFFFFF",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(255,0,0,0.7), rgba(255,0,0,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(255,215,0,0.7), rgba(255,215,0,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FFD700", // золотой
+      typographyLabelColor: "#FFFFFF80",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FF0000",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    contacts: {
+      buttonColor: "#FF0000",
+      color: "#1A1A1A",
+      boxShadow: "0px 4px 15px rgba(255,0,0,0.4)",
+      boxShadowHover: "#800000",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#FFD700",
+    },
+    boxMarginBottom: 5,
+  },
+  react: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #0D1117, #1A1A2E)", // тёмный современный фон
+    },
+    card: {
+      background: "#1E2A38", // тёмная карточка
+      color: "#61DAFB", // фирменный синий React
+      boxShadow: "0 6px 25px rgba(97,218,251,0.3)", // мягкая голубая тень
+      borderRadius: "12px",
+      border: "1px solid rgba(97,218,251,0.2)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #61DAFB, #21A1F1)", // градиент React Blue
+      avatarBorder: "2px solid #61DAFB",
+      typographyColor: "#FFFFFF",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(97,218,251,0.8), rgba(97,218,251,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(33,161,241,0.8), rgba(33,161,241,0))",
+    statiscics: {
+      paperBackground: "rgba(97,218,251,0.05)",
+      typographyValueColor: "#61DAFB",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    advantages: {
+      paperBackground: "rgba(97,218,251,0.05)",
+      typographyValueColor: "#21A1F1",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    contacts: {
+      buttonColor: "#61DAFB",
+      color: "#0D1117",
+      boxShadow: "0px 4px 15px rgba(97,218,251,0.4)",
+      boxShadowHover: "#21A1F1",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#61DAFB",
+    },
+    boxMarginBottom: 5,
+  },
+  pokemonDark: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #FDEB71, #F8D800)", // светлый фон страницы
+    },
+    card: {
+      background: "#1A1A1A", // тёмная карточка
+      color: "#FFDE00", // яркий жёлтый текст
+      boxShadow: "0 6px 25px rgba(255,222,0,0.3)", // мягкая тень
+      borderRadius: "12px",
+      border: "2px solid #FF0000", // красная рамка
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #FFDE00, #FF0000)", // градиент Pokémon
+      avatarBorder: "2px solid #3B4CCA", // синяя рамка аватара
+      typographyColor: "#FFFFFF",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(255,0,0,0.8), rgba(255,0,0,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(59,76,202,0.8), rgba(59,76,202,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FFDE00",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#FF0000",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    contacts: {
+      buttonColor: "#FFDE00",
+      color: "#1A1A1A",
+      boxShadow: "0px 4px 15px rgba(255,222,0,0.4)",
+      boxShadowHover: "#FF0000",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#FF0000",
+    },
+    boxMarginBottom: 5,
+  },
+  netflix: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #141414, #1B1B1B)", // тёмный фон
+    },
+    card: {
+      background: "#1B1B1B", // тёмный блок карточки
+      color: "white",
+      boxShadow: "0px 6px 25px rgba(0,0,0,0.7)", // глубокая тень
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #E50914, #B1060F)", // фирменный красный Netflix
+      avatarBorder: "2px solid #E50914",
+      typographyColor: "white",
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(229,9,20,0.8), rgba(229,9,20,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(229,9,20,0.8), rgba(229,9,20,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#E50914",
+      typographyLabelColor: "#FFFFFF80", // полупрозрачный белый
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.05)",
+      typographyValueColor: "#E50914",
+      typographyLabelColor: "#FFFFFF80",
+    },
+    contacts: {
+      buttonColor: "#E50914",
+      color: "white",
+      boxShadow: "0px 4px 15px rgba(229,9,20,0.4)",
+      boxShadowHover: "#B1060F",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#E50914",
     },
     boxMarginBottom: 5,
   },

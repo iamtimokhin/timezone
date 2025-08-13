@@ -20,8 +20,10 @@ import ThemeButton from "./components/ThemeButton";
 import SaveContactButton from "./components/SaveContactButton";
 export default function App() {
   const [currentTheme, setCurrentTheme] = useState(() => {
-    return localStorage.getItem("theme") || Object.keys(themes)[0];
+    const saved = localStorage.getItem("theme");
+    return saved && themes[saved] ? saved : Object.keys(themes)[0];
   });
+
   const [loading, setLoading] = useState(true);
 
   // сохраняем тему в localStorage
