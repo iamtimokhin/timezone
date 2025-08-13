@@ -1,40 +1,12 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import advantages from "./../data/advantages";
 import { Typography, Box, Paper } from "@mui/material";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
 function Advantages() {
-  class Animal {
-    constructor(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-
-    speak() {
-      console.log(`${this.name} sounds`);
-    }
-  }
-
-  class Dog extends Animal {
-    constructor(name, age, breed) {
-      super(name, age);
-      this.breed = breed;
-    }
-    speak() {
-      super.speak();
-      console.log(`${this.name} лает`);
-    }
-  }
-
-  class Cat extends Animal {
-    constructor(name, age) {
-      super(name, age);
-    }
-
-    purr() {
-      console.log(`${this.name} мурлычет`);
-    }
-  }
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   return (
     <>
       <Typography

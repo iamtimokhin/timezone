@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { Typography, Box, Paper } from "@mui/material";
 import badges from "../data/badges";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
-// typographyMarginBottom = "1.5";
-// typographyMarginTop = "1.5";
-// boxMarginBottom = 5;
 function Statistics() {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   return (
     <>
       <Typography

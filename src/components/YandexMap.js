@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
 function YandexMapEmbed() {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = themes[currentTheme];
   return (
     <Box>
       <Typography

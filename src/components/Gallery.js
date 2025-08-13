@@ -1,12 +1,14 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext, useMemo } from "react";
 import { ImageList, ImageListItem, Typography, Box } from "@mui/material";
 import examples from "..//data/examples";
 import GalleryImageSwiper from "./GalleryImageSwiper";
-import colors from "../data/colors";
-
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 export default function Gallery() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
   const handleOpen = useCallback((img, title) => {
     setSelectedImage({ img, title });

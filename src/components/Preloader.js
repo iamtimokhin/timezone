@@ -1,9 +1,12 @@
 // PreloaderLetter.jsx
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { motion } from "framer-motion";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
 const PreloaderLetter = () => {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   return (
     <motion.div
       style={{

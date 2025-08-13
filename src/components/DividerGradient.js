@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { Divider } from "@mui/material";
-import colors from "..//data/colors";
+import themes from "..//data/colors";
+import ThemeContext from "../context/context";
 
 function DividerGradient(props) {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   const { direction } = props;
   return (
     <Divider

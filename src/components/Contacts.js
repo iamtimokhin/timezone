@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import contacts from "./../data/contacts";
 import { Typography, Stack, Button } from "@mui/material";
-import colors from "..//data/colors";
+import themes from "..//data/colors";
+import ThemeContext from "../context/context";
 
 function Contacts() {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   return (
     <>
       <Typography
@@ -29,6 +32,7 @@ function Contacts() {
               textTransform: "none",
               borderRadius: 3,
               py: 1.2,
+
               boxShadow: colors.contacts.boxShadow,
               "&:hover": { background: colors.contacts.boxShadowHover },
             }}

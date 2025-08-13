@@ -1,9 +1,18 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  useMemo,
+} from "react";
 import { CardHeader, Avatar, Box, Typography } from "@mui/material";
-import colors from "../data/colors";
+import themes from "../data/colors";
 import AvatarSwiper from "./AvatarSwiper";
+import ThemeContext from "../context/context";
 
 function ProfileHeader({ image, name, icon: Icon, status }) {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   const [open, setOpen] = useState(false);
 
   const handleOpen = useCallback(() => setOpen(true), []);

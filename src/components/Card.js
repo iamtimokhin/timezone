@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { Card } from "@mui/material";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
 function CardTemplate({ children }) {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = themes[currentTheme];
   return (
     <Card
       sx={{

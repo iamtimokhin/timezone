@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import { SwipeableDrawer, IconButton, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import colors from "../data/colors";
+import themes from "../data/colors";
+import ThemeContext from "../context/context";
 
 const AvatarSwiper = React.memo(function AvatarSwiper(props) {
+  const { currentTheme } = useContext(ThemeContext);
+  const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   const { onClose, onOpen, image, name, open } = props;
   return (
     <SwipeableDrawer
