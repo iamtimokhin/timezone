@@ -17,7 +17,7 @@ import profileData from "./data/profileData";
 import themes from "./data/colors";
 import ThemeContext from "./context/context";
 import ThemeButton from "./components/ThemeButton";
-
+import SaveContactButton from "./components/SaveContactButton";
 export default function App() {
   const [currentTheme, setCurrentTheme] = useState(() => {
     return localStorage.getItem("theme") || Object.keys(themes)[0];
@@ -55,9 +55,11 @@ export default function App() {
               {/* <YandexMapEmbed /> */}
               {/* <DividerGradient direction="right" /> */}
               <Contacts />
+
               <DividerGradient direction="right" />
               <ThemeButton />
               <DividerGradient direction="left" />
+
               <ProfileFooter />
             </Content>
           </Card>

@@ -3,6 +3,8 @@ import contacts from "./../data/contacts";
 import { Typography, Stack, Button } from "@mui/material";
 import themes from "..//data/colors";
 import ThemeContext from "../context/context";
+import SaveContactButton from "./SaveContactButton";
+import profileData from "../data/profileData";
 
 function Contacts() {
   const { currentTheme } = useContext(ThemeContext);
@@ -18,7 +20,8 @@ function Contacts() {
       >
         Контакты
       </Typography>
-      <Stack spacing={1} sx={{ mb: colors.boxMarginBottom }}>
+      {/* <Stack spacing={1} sx={{ mb: colors.boxMarginBottom }}></Stack> */}
+      <Stack spacing={1} sx={{ mb: 3 }}>
         {contacts.map((link) => (
           <Button
             key={link.title}
@@ -40,6 +43,7 @@ function Contacts() {
             {link.title}
           </Button>
         ))}
+        <SaveContactButton contact={profileData} />
       </Stack>
     </>
   );
