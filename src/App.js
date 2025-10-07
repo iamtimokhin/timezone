@@ -11,7 +11,6 @@ import {
   ProfileFooter,
   Preloader,
   Gallery,
-  PartnersSection,
   ThemeButton,
   CenterAlert,
   YandexMapEmbed,
@@ -72,8 +71,6 @@ export default function App() {
               <DividerGradient direction="right" />
               <Gallery />
               <DividerGradient direction="left" />
-              <PartnersSection />
-              <DividerGradient direction="right" />
               <Contacts />
               <DividerGradient direction="left" />
               <YandexMapEmbed />

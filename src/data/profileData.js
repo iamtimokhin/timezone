@@ -1,4 +1,4 @@
-import AvatarImg from "..//assets/actor.gif";
+import AvatarImg from "..//assets/PhilippTimokhin.jpg";
 import { ReactComponent as Verify } from "..//assets/verify.svg";
 
 const profileData = {
@@ -8,7 +8,6 @@ const profileData = {
   status: "Надёжный продавец на Авито с 2016 года",
   icon: Verify,
   image: AvatarImg,
-  
 };
 
 export default profileData;

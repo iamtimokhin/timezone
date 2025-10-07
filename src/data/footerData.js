@@ -1,5 +1,4 @@
-import AvatarImg from "..//assets/actor.gif";
-import { ReactComponent as Verify } from "..//assets/verify.svg";
+import AvatarImg from "..//assets/PhilippTimokhin.jpg";
 
 const footerData = {
   name: "Филипп Тимохин",
