@@ -1,7 +1,8 @@
 import React, { useContext, useMemo, useState, useEffect } from "react";
-import { Button, Typography, CircularProgress, Box } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import ThemeContext from "../context/context";
 import themes from "../data/colors";
+import ThemedCircularProgress from "./ThemedCircularProgress";
 
 function ThemeButton() {
   const { currentTheme, setCurrentTheme } = useContext(ThemeContext);
@@ -32,12 +33,11 @@ function ThemeButton() {
         variant="subtitle1"
         mb={1.5}
         fontWeight="bold"
-        color="white"
+        color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
         Сменить тему визитки
       </Typography>
-
       <Button
         onClick={handleClick}
         fullWidth
@@ -51,20 +51,18 @@ function ThemeButton() {
           py: 1.2,
           mb: 3,
           boxShadow: colors.contacts.boxShadow,
-          "&:hover": { background: colors.contacts.boxShadowHover },
+          transition: "transform 0.1s", // плавная анимация нажатия
+          "&:hover": {
+            background: colors.contacts.buttonColor, // hover совпадает с обычным фоном
+          },
+          "&:active": {
+            transform: "scale(0.97)", // лёгкая анимация нажатия
+            background: colors.contacts.buttonColor, // при нажатии цвет не меняется
+          },
           position: "relative",
         }}
       >
-        {loading ? (
-          <CircularProgress
-            size={24}
-            sx={{
-              color: colors.contacts.color,
-            }}
-          />
-        ) : (
-          "Сменить тему"
-        )}
+        {loading ? <ThemedCircularProgress size={24} /> : "Сменить тему"}
       </Button>
     </Box>
   );

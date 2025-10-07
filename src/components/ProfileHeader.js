@@ -31,7 +31,6 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
   return (
     <>
       <CardHeader
-        // sx={{ minHeight: 250 }}
         avatar={
           <Box
             onClick={handleOpen}
@@ -60,7 +59,13 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
             </Typography>
             <Box
               component="span"
-              sx={{ ml: 0.5, display: "flex", alignItems: "center" }}
+              sx={{
+                ml: 0.5,
+                display: "flex",
+                alignItems: "center",
+                animation: "pulseRotate 2s infinite",
+                transformOrigin: "50% 50%",
+              }}
             >
               <Icon width={18} height={18} />
             </Box>
@@ -81,7 +86,20 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
         open={open}
         image={image}
         name={name}
+        status={status}
+        Icon={Icon}
       />
+
+      {/* Анимация для иконки */}
+      <style>{`
+        @keyframes pulseRotate {
+          0% { transform: scale(1) rotate(0deg); }
+          25% { transform: scale(1.1) rotate(5deg); }
+          50% { transform: scale(1.2) rotate(-5deg); }
+          75% { transform: scale(1.1) rotate(5deg); }
+          100% { transform: scale(1) rotate(0deg); }
+        }
+      `}</style>
     </>
   );
 }

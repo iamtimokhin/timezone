@@ -9,15 +9,20 @@ import {
   Advantages,
   Contacts,
   ProfileFooter,
+  Preloader,
+  Gallery,
+  PartnersSection,
+  ThemeButton,
+  CenterAlert,
+  YandexMapEmbed,
+  ScrollToTopFab,
+  ScrollProgress,
 } from "./components";
-import Preloader from "./components/Preloader";
-import YandexMapEmbed from "./components/YandexMap";
-import Gallery from "./components/Gallery";
 import profileData from "./data/profileData";
+import footerData from "./data/footerData";
 import themes from "./data/colors";
 import ThemeContext from "./context/context";
-import ThemeButton from "./components/ThemeButton";
-import SaveContactButton from "./components/SaveContactButton";
+
 export default function App() {
   const [currentTheme, setCurrentTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
@@ -25,25 +30,39 @@ export default function App() {
   });
 
   const [loading, setLoading] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
 
-  // сохраняем тему в localStorage
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 
-  // имитация загрузки
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (!loading) {
+      setShowAlert(true);
+      const timer = setTimeout(() => setShowAlert(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
   return (
     <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
+      <ScrollProgress />
       {loading ? (
-        <Preloader /> // теперь Preloader имеет доступ к теме
+        <Preloader />
       ) : (
         <BackgroundTemplate>
           <Card>
+            <CenterAlert
+              show={showAlert}
+              message="Меня зовут Тимохин Филипп, и я рад, что вы заглянули на мою визитку"
+              onClose={() => setShowAlert(false)}
+            />
+
             <ProfileHeader {...profileData} />
             <DividerGradient direction="right" />
             <Content>
@@ -53,17 +72,17 @@ export default function App() {
               <DividerGradient direction="right" />
               <Gallery />
               <DividerGradient direction="left" />
-              {/* Яндекс Карта */}
-              {/* <YandexMapEmbed /> */}
-              {/* <DividerGradient direction="right" /> */}
+              <PartnersSection />
+              <DividerGradient direction="right" />
               <Contacts />
-
+              <DividerGradient direction="left" />
+              <YandexMapEmbed />
               <DividerGradient direction="right" />
               <ThemeButton />
               <DividerGradient direction="left" />
-
-              <ProfileFooter />
+              <ProfileFooter {...footerData} />
             </Content>
+            <ScrollToTopFab />
           </Card>
         </BackgroundTemplate>
       )}

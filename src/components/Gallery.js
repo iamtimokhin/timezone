@@ -1,12 +1,22 @@
 import React, { useState, useCallback, useContext, useMemo } from "react";
-import { ImageList, ImageListItem, Typography, Box } from "@mui/material";
-import examples from "..//data/examples";
+import {
+  ImageList,
+  ImageListItem,
+  Typography,
+  Box,
+  Button,
+} from "@mui/material";
+import examples from "../data/examples";
 import GalleryImageSwiper from "./GalleryImageSwiper";
 import themes from "../data/colors";
 import ThemeContext from "../context/context";
+import ThemedCircularProgress from "./ThemedCircularProgress";
+
 export default function Gallery() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
@@ -20,16 +30,26 @@ export default function Gallery() {
     setSelectedImage(null);
   }, []);
 
+  const handleButtonClick = () => {
+    if (loading) return; // предотвращаем повторное нажатие
+    setLoading(true);
+    setTimeout(() => {
+      // имитация загрузки перед переходом
+      window.open("https://www.avito.ru/brands/timokhin", "_blank"); // замените на вашу ссылку
+      setLoading(false);
+    }, 500);
+  };
+
   return (
     <Box sx={{ mb: colors.boxMarginBottom }}>
       <Typography
         variant="subtitle1"
         mb={1.5}
         fontWeight="bold"
-        color="white"
+        color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
-        Примеры работ
+        Товары, которые я продаю на Авито
       </Typography>
 
       <ImageList cols={2} gap={12}>
@@ -64,7 +84,42 @@ export default function Gallery() {
         ))}
       </ImageList>
 
-      {/* Галерея свайпер для выбранного изображения */}
+      {/* Кнопка под галереей */}
+      <Box sx={{ textAlign: "center", mt: 2, mb: -2 }}>
+        <Button
+          onClick={handleButtonClick}
+          fullWidth
+          disabled={loading} // блокировка при загрузке
+          sx={{
+            background: colors.contacts.buttonColor,
+            color: colors.contacts.color,
+            fontWeight: "bold",
+            textTransform: "none",
+            borderRadius: 3,
+            py: 1.2,
+            px: 3,
+            boxShadow: colors.contacts.boxShadow,
+            transition: "transform 0.1s", // плавная анимация нажатия
+            "&:hover": {
+              background: colors.contacts.buttonColor, // убрали hover
+            },
+            "&:active": {
+              background: colors.contacts.buttonColor,
+              transform: "scale(0.97)", // лёгкая анимация нажатия
+            },
+            "&.Mui-disabled": {
+              background: colors.contacts.buttonColor,
+              color: colors.contacts.color,
+              boxShadow: colors.contacts.boxShadow,
+            },
+            position: "relative",
+          }}
+        >
+          {loading ? <ThemedCircularProgress size={24} /> : "Перейти на Авито"}
+        </Button>
+      </Box>
+
+      {/* Галерея свайпер */}
       {selectedImage && (
         <GalleryImageSwiper
           open={open}

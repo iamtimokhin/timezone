@@ -1,3 +1,7 @@
+body {
+  overscroll-behavior: none; /* отключает «тянущие» жесты */
+}
+
 .App {
   text-align: center;
 }
