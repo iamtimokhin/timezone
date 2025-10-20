@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useEffect } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Button, Typography, Box } from "@mui/material";
 import ThemeContext from "../context/context";
 import themes from "../data/colors";
@@ -53,11 +53,11 @@ function ThemeButton() {
           boxShadow: colors.contacts.boxShadow,
           transition: "transform 0.1s", // плавная анимация нажатия
           "&:hover": {
-            background: colors.contacts.buttonColor, // hover совпадает с обычным фоном
+            background: colors.contacts.buttonColor,
           },
           "&:active": {
-            transform: "scale(0.97)", // лёгкая анимация нажатия
-            background: colors.contacts.buttonColor, // при нажатии цвет не меняется
+            transform: "scale(0.97)",
+            background: colors.contacts.buttonColor,
           },
           position: "relative",
         }}

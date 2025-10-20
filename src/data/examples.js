@@ -22,21 +22,3 @@ const examples = [
 ];
 
 export default examples;
-
-class BankAccount {
-  #balance = 0;
-  constructor(owner) {
-    this.owner = owner;
-  }
-
-  getBalance() {
-    return `${this.#balance}`;
-  }
-  deposit(amount) {
-    return (this.#balance += amount);
-  }
-
-  withdraw(amount) {
-    return (this.#balance -= amount);
-  }
-}

@@ -6,7 +6,6 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import MailIcon from "@mui/icons-material/Mail";
-import ShareIcon from "@mui/icons-material/Share";
 import ThemeContext from "../context/context";
 import themes from "../data/colors";
 import ThemedCircularProgress from "./ThemedCircularProgress";
@@ -27,10 +26,9 @@ export default function ShareButton() {
   const handleClick = () => {
     if (loading) return;
     setLoading(true);
-    // Показываем лоадинг 300 мс перед открытием свайпера
     setTimeout(() => {
       setOpen(true);
-      setLoading(false); // после открытия убираем лоадинг
+      setLoading(false);
     }, 300);
   };
 
@@ -42,6 +40,7 @@ export default function ShareButton() {
     borderRadius: 3,
     py: 1.2,
     boxShadow: colors.contacts.boxShadow,
+    "&:hover": { background: colors.contacts.buttonColor },
     "&:active": { transform: "scale(0.97)" },
     display: "flex",
     alignItems: "center",
@@ -60,23 +59,15 @@ export default function ShareButton() {
           onClick={handleClick}
           fullWidth
           sx={{
-            background: colors.contacts.buttonColor,
-            color: colors.contacts.color,
-            fontWeight: "bold",
-            textTransform: "none",
-            borderRadius: 3,
-            py: 1.2,
-            boxShadow: colors.contacts.boxShadow,
-            transition: "transform 0.1s",
-            "&:hover": { background: colors.contacts.buttonColor },
-            "&:active": { transform: "scale(0.97)" },
+            ...buttonStyle,
+            justifyContent: "center",
           }}
         >
           {loading ? <ThemedCircularProgress size={24} /> : "Поделиться"}
         </Button>
       </Box>
 
-      {/* Fullscreen Swipeable Drawer */}
+      {/* Swipeable Drawer */}
       <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -99,7 +90,7 @@ export default function ShareButton() {
           },
         }}
       >
-        {/* Крестик для закрытия */}
+        {/* Кнопка закрытия */}
         <IconButton
           onClick={() => setOpen(false)}
           sx={{
@@ -114,14 +105,42 @@ export default function ShareButton() {
           <CloseIcon />
         </IconButton>
 
-        {/* Кнопки по центру */}
+        {/* Пульсирующая TelegramIcon */}
         <Box
           sx={{
-            width: "80%",
+            mb: 3,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: colors.backgroundTemplate.background,
+            fontSize: 64,
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}
+        >
+          <TelegramIcon
+            sx={{
+              fontSize: 64,
+              color: colors.profileHeader.typographyColor,
+              animation: "pulse 1.5s ease-in-out infinite", // если пульсирующая анимация нужна
+            }}
+          />
+        </Box>
+
+        <style>{`
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+          }
+        `}</style>
+
+        {/* Кнопки шаринга в стиле Contacts */}
+        <Box
+          sx={{
+            width: "100%",
             maxWidth: 360,
             display: "flex",
             flexDirection: "column",
-            gap: 2,
+            gap: 1,
           }}
         >
           <Button
@@ -151,7 +170,7 @@ export default function ShareButton() {
             target="_blank"
             fullWidth
             sx={buttonStyle}
-            startIcon={<ShareIcon sx={{ fontSize: iconSize }} />} // VK иконку можно заменить кастом
+            startIcon={<ContentCopyIcon sx={{ fontSize: iconSize }} />}
           >
             VK
           </Button>

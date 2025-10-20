@@ -28,7 +28,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
   const [startY, setStartY] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
 
-  // Авто-уведомление через 3 секунды после открытия
+  // Авто-уведомление через 1 секунду после открытия
   useEffect(() => {
     let timer;
     if (open) {
@@ -79,7 +79,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
             color: "white",
             backgroundColor: "rgba(0,0,0,0.3)",
             "&:hover": { backgroundColor: "rgba(0,0,0,0.5)" },
-            zIndex: 1600, // выше, чем уведомление
+            zIndex: 1600,
           }}
           aria-label="close"
         >
@@ -107,27 +107,56 @@ const VisitSwiper = React.memo(function VisitSwiper({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* аватар */}
+          {/* Аватар с пульсирующей тенью */}
           <Box
-            component="img"
-            src={image}
-            alt={`${name} avatar`}
             sx={{
               width: 180,
               height: 180,
               borderRadius: "50%",
-              objectFit: "cover",
-              border: colors.profileHeader.avatarBorder,
-              boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+              position: "relative",
               mb: 2,
-              animation: "pulse 2s infinite",
-              "@keyframes pulse": {
-                "0%": { boxShadow: "0 0 0 0 rgba(39,135,245, 0.7)" },
-                "70%": { boxShadow: "0 0 0 20px rgba(39,135,245, 0)" },
-                "100%": { boxShadow: "0 0 0 0 rgba(39,135,245, 0)" },
-              },
             }}
-          />
+          >
+            {/* Пульсирующая тень */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                boxShadow: "0 0 0 0 rgba(39,135,245,0.7)",
+                animation: "pulseShadow 2s infinite",
+                zIndex: 0,
+              }}
+            />
+
+            {/* Сам аватар */}
+            <Box
+              component="img"
+              src={image}
+              alt={`${name} avatar`}
+              sx={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: colors.profileHeader.avatarBorder,
+                boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+                position: "relative",
+                zIndex: 1,
+              }}
+            />
+
+            <style>{`
+              @keyframes pulseShadow {
+                0% { box-shadow: 0 0 0 0 rgba(39,135,245,0.7); }
+                70% { box-shadow: 0 0 0 20px rgba(39,135,245,0); }
+                100% { box-shadow: 0 0 0 0 rgba(39,135,245,0); }
+              }
+            `}</style>
+          </Box>
 
           {/* имя */}
           <Typography
@@ -214,7 +243,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
       >
         <Alert
           icon={false}
-          onClick={() => setShowNotification(false)} // <- закрытие по клику
+          onClick={() => setShowNotification(false)}
           sx={{
             width: "auto",
             maxWidth: 300,
@@ -225,7 +254,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
             textAlign: "center",
             fontWeight: "bold",
             p: 2,
-            cursor: "pointer", // покажем, что можно кликнуть
+            cursor: "pointer",
           }}
         >
           <Box

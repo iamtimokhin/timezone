@@ -81,47 +81,6 @@ const themes = {
     boxMarginBottom: 5,
   },
 
-  darkSapphire: {
-    backgroundTemplate: {
-      background: "linear-gradient(180deg, #0B0B14, #1A1A2E)",
-    },
-    card: {
-      background: "#1F1F3F",
-      color: "white",
-      boxShadow: "0px 6px 20px rgba(70,130,180,0.2)", // мягкий сапфир
-    },
-    profileHeader: {
-      boxBackground: "linear-gradient(45deg, #4682B4, #4169E1)",
-      avatarBorder: "2px solid #1F1F3F",
-      typographyColor: "#B0C4DE",
-    },
-    gradientRight:
-      "linear-gradient(to right, rgba(70,130,180,0.3), rgba(70,130,180,0))",
-    gradientLeft:
-      "linear-gradient(to left, rgba(70,130,180,0.3), rgba(70,130,180,0))",
-    statiscics: {
-      paperBackground: "rgba(255,255,255,0.05)",
-      typographyValueColor: "#4682B4",
-      typographyLabelColor: "#B0C4DE",
-    },
-    advantages: {
-      paperBackground: "rgba(255,255,255,0.05)",
-      typographyValueColor: "#4169E1",
-      typographyLabelColor: "#B0C4DE",
-    },
-    contacts: {
-      buttonColor: "#4682B4",
-      color: "black",
-      boxShadow: "0px 4px 12px rgba(70,130,180,0.2)",
-      boxShadowHover: "#4169E1",
-    },
-    profileFooter: {
-      typographyColor: "rgba(255,255,255,0.4)",
-      hoverColor: "#4682B4",
-    },
-    boxMarginBottom: 5,
-  },
-
   oceanBlue: {
     backgroundTemplate: {
       background: "linear-gradient(180deg, #141E30, #243B55)",
@@ -280,6 +239,86 @@ const themes = {
     profileFooter: {
       typographyColor: "rgba(255,255,255,0.4)",
       hoverColor: "#00A0FF",
+    },
+    boxMarginBottom: 5,
+  },
+  oceanBreeze: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #0C2B4B, #1F4F7A)", // свежий морской фон
+    },
+    card: {
+      background: "#1A3B60", // контрастный, но гармоничный
+      color: "white",
+      boxShadow: "0px 6px 25px rgba(30,120,200,0.4)",
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #338BC1, #3EC1D3)", // яркий градиент без неона
+      avatarBorder: "2px solid #1A3B60",
+      typographyColor: "#CFE8F5", // светлый голубой текст
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(62,193,211,0.6), rgba(62,193,211,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(62,193,211,0.6), rgba(62,193,211,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.07)",
+      typographyValueColor: "#338BC1",
+      typographyLabelColor: "#CFE8F5",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.07)",
+      typographyValueColor: "#3EC1D3",
+      typographyLabelColor: "#CFE8F5",
+    },
+    contacts: {
+      buttonColor: "#338BC1",
+      color: "white",
+      boxShadow: "0px 4px 15px rgba(30,120,200,0.4)",
+      boxShadowHover: "#2A6B90",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#3EC1D3",
+    },
+    boxMarginBottom: 5,
+  },
+  brightOcean: {
+    backgroundTemplate: {
+      background: "linear-gradient(180deg, #0A1F33, #1B3B5A)", // насыщенный морской фон
+    },
+    card: {
+      background: "#1F456D", // выделяется на фоне, но гармонично
+      color: "white",
+      boxShadow: "0px 6px 25px rgba(30,100,180,0.35)", // мягкий блеск
+    },
+    profileHeader: {
+      boxBackground: "linear-gradient(45deg, #2C7EB8, #3ABFD9)", // яркий, но не неоновый градиент
+      avatarBorder: "2px solid #1F456D",
+      typographyColor: "#D0E7F7", // светлый голубой текст
+    },
+    gradientRight:
+      "linear-gradient(to right, rgba(58,127,184,0.6), rgba(58,127,184,0))",
+    gradientLeft:
+      "linear-gradient(to left, rgba(58,127,184,0.6), rgba(58,127,184,0))",
+    statiscics: {
+      paperBackground: "rgba(255,255,255,0.08)",
+      typographyValueColor: "#2C7EB8",
+      typographyLabelColor: "#D0E7F7",
+    },
+    advantages: {
+      paperBackground: "rgba(255,255,255,0.08)",
+      typographyValueColor: "#3ABFD9",
+      typographyLabelColor: "#D0E7F7",
+    },
+    contacts: {
+      buttonColor: "#2C7EB8", // яркие кнопки
+      color: "white",
+      boxShadow: "0px 4px 15px rgba(44,150,234,0.35)",
+      boxShadowHover: "#1B5F8A",
+    },
+    profileFooter: {
+      typographyColor: "rgba(255,255,255,0.5)",
+      hoverColor: "#3ABFD9",
     },
     boxMarginBottom: 5,
   },

@@ -21,6 +21,7 @@ export default function Gallery() {
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
   const handleOpen = useCallback((img, title) => {
+    if (!img || !title) return; // безопасная проверка
     setSelectedImage({ img, title });
     setOpen(true);
   }, []);
@@ -34,11 +35,13 @@ export default function Gallery() {
     if (loading) return; // предотвращаем повторное нажатие
     setLoading(true);
     setTimeout(() => {
-      // имитация загрузки перед переходом
-      window.open("https://www.avito.ru/brands/timokhin", "_blank"); // замените на вашу ссылку
+      window.open("https://www.avito.ru/brands/timokhin", "_blank"); // ссылка на Авито
       setLoading(false);
     }, 500);
   };
+
+  // безопасная проверка, что examples — массив
+  const galleryItems = Array.isArray(examples) ? examples : [];
 
   return (
     <Box sx={{ mb: colors.boxMarginBottom }}>
@@ -53,7 +56,7 @@ export default function Gallery() {
       </Typography>
 
       <ImageList cols={2} gap={12}>
-        {examples.map((item) => (
+        {galleryItems.map((item) => (
           <ImageListItem key={item.img}>
             <Box
               sx={{
@@ -67,7 +70,7 @@ export default function Gallery() {
             >
               <img
                 src={item.img}
-                alt={item.title}
+                alt={item.title || ""}
                 loading="lazy"
                 style={{
                   width: "100%",
@@ -78,7 +81,7 @@ export default function Gallery() {
               />
             </Box>
             <Typography variant="subtitle2" mt={1}>
-              {item.description}
+              {item.description || ""}
             </Typography>
           </ImageListItem>
         ))}
@@ -89,7 +92,7 @@ export default function Gallery() {
         <Button
           onClick={handleButtonClick}
           fullWidth
-          disabled={loading} // блокировка при загрузке
+          disabled={loading}
           sx={{
             background: colors.contacts.buttonColor,
             color: colors.contacts.color,
@@ -99,13 +102,11 @@ export default function Gallery() {
             py: 1.2,
             px: 3,
             boxShadow: colors.contacts.boxShadow,
-            transition: "transform 0.1s", // плавная анимация нажатия
-            "&:hover": {
-              background: colors.contacts.buttonColor, // убрали hover
-            },
+            transition: "transform 0.1s",
+            "&:hover": { background: colors.contacts.buttonColor },
             "&:active": {
               background: colors.contacts.buttonColor,
-              transform: "scale(0.97)", // лёгкая анимация нажатия
+              transform: "scale(0.97)",
             },
             "&.Mui-disabled": {
               background: colors.contacts.buttonColor,
@@ -120,7 +121,7 @@ export default function Gallery() {
       </Box>
 
       {/* Галерея свайпер */}
-      {selectedImage && (
+      {selectedImage?.img && selectedImage?.title && (
         <GalleryImageSwiper
           open={open}
           image={selectedImage.img}

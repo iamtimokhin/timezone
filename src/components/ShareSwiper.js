@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useMemo } from "react";
 import {
   SwipeableDrawer,
   Box,
@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import themes from "../data/colors";
 import ThemeContext from "../context/context";
 
@@ -85,6 +86,34 @@ const ShareSwiper = React.memo(function ShareSwiper({ open, onClose }) {
           gap: 2,
         }}
       >
+        {/* 🔗 Иконка скрепки с анимацией */}
+        <Box
+          sx={{
+            fontSize: 64,
+            mb: 3,
+            display: "inline-block",
+            color: "#fff",
+            animation: "spin 2s linear infinite",
+            "&:hover": {
+              animation: "spin 1s linear infinite, bounce 0.5s ease infinite",
+            },
+          }}
+        >
+          <AttachFileIcon sx={{ fontSize: 64 }} />
+        </Box>
+
+        {/* Стили анимации */}
+        <style>{`
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+          }
+        `}</style>
+
         <Typography
           variant="h6"
           sx={{ color: "#fff", fontWeight: "bold", mb: 3 }}
@@ -92,6 +121,7 @@ const ShareSwiper = React.memo(function ShareSwiper({ open, onClose }) {
           Поделиться ссылкой
         </Typography>
 
+        {/* Кнопки шаринга */}
         {buttons.map((btn) => (
           <Button
             key={btn.name}
@@ -108,13 +138,11 @@ const ShareSwiper = React.memo(function ShareSwiper({ open, onClose }) {
               fontWeight: "bold",
               textTransform: "none",
               borderRadius: 3,
-              boxShadow: colors.contacts.boxShadow,
+              boxShadow:
+                colors.contacts?.boxShadow || "0px 4px 12px rgba(0,0,0,0.3)",
               transition: "transform 0.1s",
               "&:hover": { background: btn.color },
-              "&:active": {
-                background: btn.color,
-                transform: "scale(0.97)",
-              },
+              "&:active": { background: btn.color, transform: "scale(0.97)" },
             }}
           >
             {btn.name}

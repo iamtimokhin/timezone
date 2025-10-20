@@ -85,29 +85,58 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Аватар */}
+        {/* Аватар с пульсирующей тенью */}
         <Box
-          component="img"
-          src={image}
-          alt={`${name} avatar`}
           sx={{
             width: 250,
             height: 250,
             borderRadius: "50%",
-            border: colors.profileHeader.avatarBorder,
-            objectFit: "cover",
-            boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+            position: "relative",
             mb: 2,
-            animation: "pulse 2s infinite",
-            "@keyframes pulse": {
-              "0%": { boxShadow: "0 0 0 0 rgba(39,135,245, 0.7)" },
-              "70%": { boxShadow: "0 0 0 20px rgba(39,135,245, 0)" },
-              "100%": { boxShadow: "0 0 0 0 rgba(39,135,245, 0)" },
-            },
           }}
-        />
+        >
+          {/* Пульсирующая тень */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              boxShadow: "0 0 0 0 rgba(39,135,245,0.7)",
+              animation: "pulseShadow 2s infinite",
+              zIndex: 0,
+            }}
+          />
 
-        {/* Имя */}
+          {/* Сам аватар */}
+          <Box
+            component="img"
+            src={image}
+            alt={`${name} avatar`}
+            sx={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              border: colors.profileHeader.avatarBorder,
+              objectFit: "cover",
+              boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+              position: "relative",
+              zIndex: 1,
+            }}
+          />
+
+          <style>{`
+            @keyframes pulseShadow {
+              0% { box-shadow: 0 0 0 0 rgba(39,135,245,0.7); }
+              70% { box-shadow: 0 0 0 20px rgba(39,135,245,0); }
+              100% { box-shadow: 0 0 0 0 rgba(39,135,245,0); }
+            }
+          `}</style>
+        </Box>
+
+        {/* Имя с иконкой */}
         <Box display="flex" alignItems="center" sx={{ mb: 1.5 }}>
           <Typography
             variant="h6"
@@ -116,21 +145,23 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
           >
             {name}
           </Typography>
-          <Box
-            component="span"
-            sx={{
-              ml: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-              top: "1px", // чуть приподнял
-              animation: "pulseRotate 2s infinite",
-            }}
-          >
-            <Icon width={18} height={18} />
-          </Box>
+          {Icon && (
+            <Box
+              component="span"
+              sx={{
+                ml: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                top: "1px",
+              }}
+            >
+              <Icon width={18} height={18} />
+            </Box>
+          )}
         </Box>
+
         {/* Статус */}
         {status && (
           <Typography
