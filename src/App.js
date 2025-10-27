@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   BackgroundTemplate,
@@ -9,18 +9,18 @@ import {
   Advantages,
   Contacts,
   ProfileFooter,
-  Preloader,
-  Gallery,
   ThemeButton,
-  CenterAlert,
   YandexMapEmbed,
   ScrollToTopFab,
   ScrollProgress,
+  PartnersSection,
+  Gallery,
 } from "./components";
 import profileData from "./data/profileData";
 import footerData from "./data/footerData";
 import themes from "./data/colors";
 import ThemeContext from "./context/context";
+import { motion } from "framer-motion";
 
 export default function App() {
   const [currentTheme, setCurrentTheme] = useState(() => {
@@ -28,61 +28,51 @@ export default function App() {
     return saved && themes[saved] ? saved : Object.keys(themes)[0];
   });
 
-  const [loading, setLoading] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
-
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    if (!loading) {
-      setShowAlert(true);
-      const timer = setTimeout(() => setShowAlert(false), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [loading]);
-
   return (
     <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <ScrollProgress />
-      {loading ? (
-        <Preloader />
-      ) : (
-        <BackgroundTemplate>
+      <BackgroundTemplate>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Card>
-            <CenterAlert
-              show={showAlert}
-              message="Меня зовут Тимохин Филипп, и я рад, что вы заглянули на мою визитку"
-              onClose={() => setShowAlert(false)}
-            />
-
             <ProfileHeader {...profileData} />
-            <DividerGradient direction="right" />
+            <DividerGradient direction="right" />{" "}
+            {/* между хедером и статистикой */}
             <Content>
               <Statistics />
-              <DividerGradient direction="left" />
+              <DividerGradient direction="left" />{" "}
+              {/* между статистикой и преимуществами */}
               <Advantages />
-              <DividerGradient direction="right" />
+              <DividerGradient direction="right" />{" "}
+              {/* между преимуществами и галереей */}
               <Gallery />
-              <DividerGradient direction="left" />
+              <DividerGradient direction="left" />{" "}
+              {/* между галереей и партнерами */}
+              <PartnersSection />
+              <DividerGradient direction="right" />{" "}
+              {/* между партнерами и контактами */}
               <Contacts />
-              <DividerGradient direction="left" />
+              <DividerGradient direction="left" />{" "}
+              {/* между контактами и картой */}
               <YandexMapEmbed />
-              <DividerGradient direction="right" />
+              <DividerGradient direction="right" />{" "}
+              {/* между картой и кнопкой темы */}
               <ThemeButton />
-              <DividerGradient direction="left" />
+              <DividerGradient direction="left" />{" "}
+              {/* между кнопкой темы и футером */}
               <ProfileFooter {...footerData} />
             </Content>
             <ScrollToTopFab />
           </Card>
-        </BackgroundTemplate>
-      )}
+        </motion.div>
+      </BackgroundTemplate>
     </ThemeContext.Provider>
   );
 }

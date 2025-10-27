@@ -49,7 +49,7 @@ export default function Partners() {
         color={colors.profileHeader.typographyColor}
         sx={{ textAlign: "center" }}
       >
-        Галерея партнёров <span>{partnersData.length}</span>
+        Галерея партнёров
       </Typography>
 
       <ImageList cols={2} gap={12}>
