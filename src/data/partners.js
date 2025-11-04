@@ -1,6 +1,9 @@
 import Korifey from "./../assets/partners/Korifey.png";
 import Telemaster from "./../assets/partners/Telemaster.png";
 import ElenaRatkovskaya from "./../assets/partners/Elena_Ratkovskaya.jpg";
+import KorifeyWebp from "./../assets/partners/Korifey.webp";
+import TelemasterWebp from "./../assets/partners/Telemaster.webp";
+import ElenaRatkovskayaWebp from "./../assets/partners/Elena_Ratkovskaya.webp";
 
 const partners = [
   {
@@ -10,6 +13,7 @@ const partners = [
     description:
       "Профессиональные услуги по недвижимости: покупка, продажа, аренда",
     img: Korifey,
+    imgWebp: KorifeyWebp,
     link: "https://korifey.timzone.ru",
   },
   {
@@ -19,6 +23,7 @@ const partners = [
     description:
       "Профессиональный ремонт бытовой техники. Сервис, опыт, надежность и гарантия",
     img: Telemaster,
+    imgWebp: TelemasterWebp,
     link: "https://telemaster.timzone.ru",
   },
   {
@@ -28,6 +33,7 @@ const partners = [
     description:
       "Стильная мужская и женская одежда от Style Italia. Индивидуальный пошив под ваш вкус и идеальную посадку",
     img: ElenaRatkovskaya,
+    imgWebp: ElenaRatkovskayaWebp,
     link: "https://elena.timzone.ru",
   },
 ];

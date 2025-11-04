@@ -16,6 +16,7 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
   onClose,
   onOpen,
   image,
+  imageWebp, // WEBP версия
   name,
   role,
   description,
@@ -51,7 +52,7 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
   };
 
   const openIframe = () => {
-    if (closeParent) closeParent(); // закрываем родительский VisitSwiper
+    if (closeParent) closeParent();
     setIframeOpen(true);
   };
 
@@ -112,6 +113,7 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+          {/* Аватар с WEBP + fallback */}
           <Box
             sx={{
               width: 180,
@@ -121,6 +123,7 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
               mb: 2,
             }}
           >
+            {/* Пульсирующая тень */}
             <Box
               sx={{
                 position: "absolute",
@@ -134,21 +137,28 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
                 zIndex: 0,
               }}
             />
-            <Box
-              component="img"
-              src={image}
-              alt={`${name} avatar`}
-              sx={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "50%",
-                border: colors.profileHeader.avatarBorder,
-                objectFit: "cover",
-                boxShadow: "0 0 25px rgba(0,0,0,0.5)",
-                position: "relative",
-                zIndex: 1,
-              }}
-            />
+
+            <picture
+              style={{ width: "100%", height: "100%", display: "block" }}
+            >
+              {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+              <Box
+                component="img"
+                src={image}
+                alt={`${name} avatar`}
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                  border: colors.profileHeader.avatarBorder,
+                  objectFit: "cover",
+                  boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              />
+            </picture>
+
             <style>{`
               @keyframes pulseBorder {
                 0% { box-shadow: 0 0 0 0 rgba(39,135,245,0.7); }

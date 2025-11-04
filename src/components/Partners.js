@@ -18,6 +18,7 @@ export default function Partners() {
   const [loading, setLoading] = useState(false);
   const [loadingVisible, setLoadingVisible] = useState(false);
   const [visibleCount, setVisibleCount] = useState(2); // показываем по 2 партнера
+
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
@@ -31,13 +32,8 @@ export default function Partners() {
     setOpen(false);
   };
 
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 2);
-  };
-
-  const handleHide = () => {
-    setVisibleCount(2);
-  };
+  const handleShowMore = () => setVisibleCount((prev) => prev + 2);
+  const handleHide = () => setVisibleCount(2);
 
   return (
     <Box sx={{ mb: 4 }}>
@@ -64,17 +60,34 @@ export default function Partners() {
                 textAlign: "center",
               }}
             >
+              {/* WEBP с fallback */}
               <Box
-                component="img"
-                src={partner.img}
-                alt={partner.name}
                 sx={{
                   width: "100%",
                   height: 160,
-                  objectFit: "cover",
                   borderRadius: 2,
+                  overflow: "hidden",
                 }}
-              />
+              >
+                <picture
+                  style={{ width: "100%", height: "100%", display: "block" }}
+                >
+                  {partner.imgWebp && (
+                    <source srcSet={partner.imgWebp} type="image/webp" />
+                  )}
+                  <img
+                    src={partner.img}
+                    alt={partner.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </picture>
+              </Box>
+
               <Typography variant="subtitle2" fontWeight="bold" noWrap mt={1}>
                 {partner.name}
               </Typography>
@@ -87,12 +100,11 @@ export default function Partners() {
       </ImageList>
 
       <Box sx={{ textAlign: "center", mt: 2, mb: -2 }}>
-        {/* Кнопка "Показать еще" */}
-        {/* Кнопка "Показать еще" */}
+        {/* Кнопка "Показать ещё" */}
         {visibleCount < partnersData.length && (
           <Button
             fullWidth
-            disabled={loading} // блокировка
+            disabled={loading}
             onClick={() => {
               setLoading(true);
               setTimeout(() => {
@@ -128,7 +140,7 @@ export default function Partners() {
         {visibleCount > 2 && (
           <Button
             fullWidth
-            disabled={loadingVisible} // блокировка
+            disabled={loadingVisible}
             onClick={() => {
               setLoadingVisible(true);
               setTimeout(() => {
@@ -160,12 +172,15 @@ export default function Partners() {
           </Button>
         )}
       </Box>
+
+      {/* Свайпер партнёра */}
       {selectedPartner && (
         <PartnerImageSwiper
           open={open}
           onClose={handleClose}
           onOpen={() => setOpen(true)}
           image={selectedPartner.img}
+          imageWebp={selectedPartner.imgWebp}
           name={selectedPartner.name}
           role={selectedPartner.role}
           description={selectedPartner.description}
