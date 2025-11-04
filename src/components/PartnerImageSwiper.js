@@ -19,7 +19,8 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
   name,
   role,
   description,
-  link, // ссылка на визитку
+  link,
+  closeParent, // функция для закрытия VisitSwiper
 }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
@@ -47,6 +48,11 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
     borderRadius: 3,
     boxShadow: colors.contacts.boxShadow,
     mb: 1,
+  };
+
+  const openIframe = () => {
+    if (closeParent) closeParent(); // закрываем родительский VisitSwiper
+    setIframeOpen(true);
   };
 
   return (
@@ -106,7 +112,6 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Аватар с пульсирующей обводкой */}
           <Box
             sx={{
               width: 180,
@@ -116,7 +121,6 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
               mb: 2,
             }}
           >
-            {/* Пульсирующая обводка */}
             <Box
               sx={{
                 position: "absolute",
@@ -154,7 +158,6 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
             `}</style>
           </Box>
 
-          {/* Имя */}
           <Typography
             variant="h6"
             color={colors.profileHeader.typographyColor}
@@ -172,7 +175,6 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
               {role}
             </Typography>
           )}
-
           {description && (
             <Typography
               variant="body2"
@@ -183,7 +185,7 @@ const PartnerImageSwiper = React.memo(function PartnerImageSwiper({
           )}
 
           {link && (
-            <Button onClick={() => setIframeOpen(true)} sx={buttonStyle}>
+            <Button onClick={openIframe} sx={buttonStyle}>
               Перейти в визитку
             </Button>
           )}

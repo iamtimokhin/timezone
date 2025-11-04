@@ -20,9 +20,9 @@ export default function Gallery() {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
 
-  const handleOpen = useCallback((img, title) => {
+  const handleOpen = useCallback((img, webp, title) => {
     if (!img || !title) return; // безопасная проверка
-    setSelectedImage({ img, title });
+    setSelectedImage({ img, webp, title });
     setOpen(true);
   }, []);
 
@@ -32,15 +32,14 @@ export default function Gallery() {
   }, []);
 
   const handleButtonClick = () => {
-    if (loading) return; // предотвращаем повторное нажатие
+    if (loading) return;
     setLoading(true);
     setTimeout(() => {
-      window.open("https://www.avito.ru/brands/timokhin", "_blank"); // ссылка на Авито
+      window.open("https://www.avito.ru/brands/timokhin", "_blank");
       setLoading(false);
     }, 500);
   };
 
-  // безопасная проверка, что examples — массив
   const galleryItems = Array.isArray(examples) ? examples : [];
 
   return (
@@ -66,19 +65,22 @@ export default function Gallery() {
                 borderRadius: 2,
                 cursor: "pointer",
               }}
-              onClick={() => handleOpen(item.img, item.title)}
+              onClick={() => handleOpen(item.img, item.webp, item.title)}
             >
-              <img
-                src={item.img}
-                alt={item.title || ""}
-                loading="lazy"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: 8,
-                }}
-              />
+              <picture>
+                {item.webp && <source srcSet={item.webp} type="image/webp" />}
+                <img
+                  src={item.img}
+                  alt={item.title || ""}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: 8,
+                  }}
+                />
+              </picture>
             </Box>
             <Typography variant="subtitle2" mt={1}>
               {item.description || ""}
@@ -124,7 +126,7 @@ export default function Gallery() {
       {selectedImage?.img && selectedImage?.title && (
         <GalleryImageSwiper
           open={open}
-          image={selectedImage.img}
+          image={selectedImage.webp || selectedImage.img} // WEBP при наличии
           alt={selectedImage.title}
           onOpen={() => setOpen(true)}
           onClose={handleClose}
