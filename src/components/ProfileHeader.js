@@ -10,7 +10,7 @@ import themes from "../data/colors";
 import AvatarSwiper from "./AvatarSwiper";
 import ThemeContext from "../context/context";
 
-function ProfileHeader({ image, name, icon: Icon, status }) {
+function ProfileHeader({ image, name, icon: Icon, status, imageWebp }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = useMemo(() => themes[currentTheme], [currentTheme]);
   const [open, setOpen] = useState(false);
@@ -42,14 +42,29 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
               cursor: "pointer",
             }}
           >
-            <Avatar
-              src={image}
+            <Box
+              component="picture"
               sx={{
                 width: 60,
                 height: 60,
+                borderRadius: "50%",
+                overflow: "hidden",
                 border: colors.profileHeader.avatarBorder,
+                display: "inline-block",
               }}
-            />
+            >
+              {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+              <img
+                src={image}
+                alt={name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </Box>
           </Box>
         }
         title={
@@ -85,6 +100,7 @@ function ProfileHeader({ image, name, icon: Icon, status }) {
         onOpen={handleOpen}
         open={open}
         image={image}
+        imageWebp={imageWebp}
         name={name}
         status={status}
         Icon={Icon}

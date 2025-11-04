@@ -8,7 +8,8 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
   open,
   onClose,
   onOpen,
-  image,
+  image, // fallback
+  imageWebp, // WEBP
   name,
   status,
   Icon,
@@ -110,22 +111,35 @@ const AvatarSwiper = React.memo(function AvatarSwiper({
             }}
           />
 
-          {/* Сам аватар */}
+          {/* WEBP аватар с fallback */}
           <Box
-            component="img"
-            src={image}
-            alt={`${name} avatar`}
             sx={{
               width: "100%",
               height: "100%",
               borderRadius: "50%",
-              border: colors.profileHeader.avatarBorder,
-              objectFit: "cover",
-              boxShadow: "0 0 25px rgba(0,0,0,0.5)",
               position: "relative",
               zIndex: 1,
+              overflow: "hidden",
+              border: colors.profileHeader.avatarBorder,
             }}
-          />
+          >
+            <picture
+              style={{ width: "100%", height: "100%", display: "block" }}
+            >
+              {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+              <img
+                src={image}
+                alt={`${name} avatar`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+                }}
+              />
+            </picture>
+          </Box>
 
           <style>{`
             @keyframes pulseShadow {

@@ -6,7 +6,7 @@ import ThemeContext from "../context/context";
 import VisitSwiper from "./visitSwiper"; // 👈 Drawer
 import ThemedCircularProgress from "./ThemedCircularProgress";
 
-function ProfileFooter({ image, name, status, link, avito }) {
+function ProfileFooter({ image, imageWebp, name, status, link, avito }) {
   const { currentTheme } = useContext(ThemeContext);
   const colors = themes[currentTheme];
 
@@ -54,6 +54,7 @@ function ProfileFooter({ image, name, status, link, avito }) {
         onClose={handleClose}
         onOpen={handleOpen}
         image={image}
+        imageWebp={imageWebp}
         name={name}
         link={link}
         status={status}

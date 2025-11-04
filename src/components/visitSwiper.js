@@ -15,6 +15,7 @@ const VisitSwiper = React.memo(function VisitSwiper({
   onClose,
   onOpen,
   image,
+  imageWebp,
   name,
   link,
   status,
@@ -118,21 +119,35 @@ const VisitSwiper = React.memo(function VisitSwiper({
           />
 
           {/* Сам аватар */}
+          {/* Сам аватар */}
           <Box
-            component="img"
-            src={image}
-            alt={`${name} avatar`}
             sx={{
               width: "100%",
               height: "100%",
               borderRadius: "50%",
-              objectFit: "cover",
-              border: colors.profileHeader.avatarBorder,
-              boxShadow: "0 0 25px rgba(0,0,0,0.5)",
               position: "relative",
               zIndex: 1,
+              overflow: "hidden",
+              border: colors.profileHeader.avatarBorder,
             }}
-          />
+          >
+            <picture
+              style={{ width: "100%", height: "100%", display: "block" }}
+            >
+              {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+              <img
+                src={image}
+                alt={`${name} avatar`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  boxShadow: "0 0 25px rgba(0,0,0,0.5)",
+                }}
+              />
+            </picture>
+          </Box>
 
           <style>{`
             @keyframes pulseShadow {
