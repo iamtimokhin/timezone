@@ -66,7 +66,7 @@ END:VCARD`;
           position: "relative",
         }}
       >
-        {loading ? <ThemedCircularProgress size={24} /> : "Сохранить"}
+        {loading ? <ThemedCircularProgress size={24} /> : "Сохранить контакт"}
       </Button>
     </Box>
   );
